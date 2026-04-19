@@ -189,6 +189,7 @@ header.scrolled {
     z-index: 10;
     text-align: center;
     color: #fff;
+    padding: 0 25px; /* Add padding to prevent text from touching edge info */
 }
 
 .hero-catch {
@@ -375,14 +376,14 @@ header.scrolled {
 .news-item {
     display: flex;
     justify-content: space-between;
-    padding: 25px 0;
+    padding: 25px 20px; /* Add horizontal padding info */
     border-bottom: 1px solid var(--line-color);
     transition: 0.3s;
 }
 
 @media (max-width: 768px) {
     .news-item {
-        padding: 20px 0;
+        padding: 20px 10px; /* Keep some internal padding on mobile */
     }
 }
 
@@ -432,7 +433,7 @@ header.scrolled {
 }
 
 .company-table th, .company-table td {
-    padding: 25px 0;
+    padding: 25px 15px; /* Added 15px horizontal padding */
     text-align: left;
     border-bottom: 1px solid var(--line-color);
 }
@@ -516,7 +517,7 @@ textarea.form-control {
 footer {
     background: #111;
     color: #fff;
-    padding: 100px 0 50px;
+    padding: 100px 25px 50px; /* Add horizontal padding to footer */
 }
 
 .footer-inner {
