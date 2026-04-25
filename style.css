@@ -645,7 +645,7 @@ footer {
 .google-form-wrapper {
     position: relative;
     width: 100%;
-    height: 1000px; /* フォームの長さに合わせて調整（スクロールバーを消すため） */
+    height: 1500px; /* 余裕を持って高さを確保 */
     overflow: hidden;
 }
 
@@ -660,6 +660,6 @@ footer {
         padding: 10px;
     }
     .google-form-wrapper {
-        height: 1200px; /* スマホでは項目が縦に伸びるため高めに設定 */
+        height: 1800px; /* スマホ用もさらに高く設定 */
     }
 }
