@@ -422,6 +422,18 @@ header.scrolled {
     font-size: 0.95rem;
 }
 
+.news-more {
+    font-family: var(--font-en);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--primary-color);
+    font-weight: 500;
+    margin-left: 30px;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+}
+
 @media (max-width: 768px) {
     .news-item {
         flex-direction: column;
@@ -430,6 +442,12 @@ header.scrolled {
 
     .news-title {
         margin-left: 0;
+    }
+
+    .news-more {
+        margin-left: 0;
+        margin-top: 5px;
+        justify-content: flex-end;
     }
 }
 

@@ -91,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span class="news-category">NEWS</span>
                     </div>
                     <h3 class="news-title">${post.title}</h3>
+                    <span class="news-more">READ MORE →</span>
                 `;
 
                 newsListContainer.appendChild(newsItem);
