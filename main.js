@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!newsListContainer) return;
 
         try {
-            const response = await fetch(`https://${MICROCMS_SERVICE_ID}.microcms.io/api/v1/news`, {
+            const response = await fetch(`https://${MICROCMS_SERVICE_ID}.microcms.io/api/v1/news?limit=3`, {
                 headers: {
                     'X-MICROCMS-API-KEY': MICROCMS_API_KEY,
                 },
