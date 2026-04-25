@@ -56,4 +56,53 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    /* --- microCMS integration --- */
+    const MICROCMS_SERVICE_ID = 'fujitaup30'; // あなたのサービスID
+    const MICROCMS_API_KEY = 'uasbMofFROgor1GwDTNa9IwPjVUaCMNj0zV1';       // あなたのAPIキー
+
+    async function fetchNews() {
+        const newsListContainer = document.getElementById('news-list');
+        if (!newsListContainer) return;
+
+        try {
+            const response = await fetch(`https://${MICROCMS_SERVICE_ID}.microcms.io/api/v1/news`, {
+                headers: {
+                    'X-MICROCMS-API-KEY': MICROCMS_API_KEY,
+                },
+            });
+
+            if (!response.ok) throw new Error('microCMS fetch failed');
+
+            const data = await response.json();
+            newsListContainer.innerHTML = ''; // Clear loading text
+
+            data.contents.forEach(post => {
+                const date = new Date(post.publishedAt);
+                const formattedDate = `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
+
+                const newsItem = document.createElement('div');
+                newsItem.className = 'news-item fade-up';
+                // リンクが必要な場合は詳細ページの実装に合わせて a タグに変更してください
+                newsItem.innerHTML = `
+                    <div class="news-meta">
+                        <span class="news-date">${formattedDate}</span>
+                        <span class="news-category">NEWS</span>
+                    </div>
+                    <h3 class="news-title">${post.title}</h3>
+                `;
+
+                newsListContainer.appendChild(newsItem);
+                
+                // 新しく追加した要素をアニメーションの監視対象に入れる
+                observer.observe(newsItem);
+            });
+        } catch (error) {
+            console.error('Error fetching news:', error);
+            newsListContainer.innerHTML = '<p>ニュースの読み込みに失敗しました。</p>';
+        }
+    }
+
+    // ニュースを取得
+    fetchNews();
 });

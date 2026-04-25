@@ -55,7 +55,8 @@ img {
 
 @media (max-width: 768px) {
     .container {
-        padding: 0 25px; /* Fixed padding for small screens */
+        padding: 0 25px;
+        /* Fixed padding for small screens */
     }
 }
 
@@ -90,7 +91,8 @@ img {
     font-family: var(--font-serif);
     font-size: 2rem;
     letter-spacing: 0.1em;
-    word-break: keep-all; /* Prevent awkward breaks in Japanese titles */
+    word-break: keep-all;
+    /* Prevent awkward breaks in Japanese titles */
 }
 
 @media (max-width: 480px) {
@@ -132,7 +134,7 @@ header {
 header.scrolled {
     background: rgba(255, 255, 255, 0.95);
     padding: 15px 4%;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .header-inner {
@@ -155,7 +157,8 @@ header.scrolled {
 
 @media (max-width: 1024px) {
     .nav-menu {
-        display: none; /* Mobile menu will be handled by JS */
+        display: none;
+        /* Mobile menu will be handled by JS */
     }
 }
 
@@ -191,7 +194,8 @@ header.scrolled {
     z-index: 10;
     text-align: center;
     color: #fff;
-    padding: 0 25px; /* Add padding to prevent text from touching edge info */
+    padding: 0 25px;
+    /* Add padding to prevent text from touching edge info */
 }
 
 .hero-catch {
@@ -200,7 +204,7 @@ header.scrolled {
     letter-spacing: 0.2em;
     margin-bottom: 20px;
     line-height: 1.4;
-    text-shadow: 0 0 20px rgba(0,0,0,0.3);
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 @media (max-width: 768px) {
@@ -378,14 +382,16 @@ header.scrolled {
 .news-item {
     display: flex;
     justify-content: space-between;
-    padding: 25px 20px; /* Add horizontal padding info */
+    padding: 25px 20px;
+    /* Add horizontal padding info */
     border-bottom: 1px solid var(--line-color);
     transition: 0.3s;
 }
 
 @media (max-width: 768px) {
     .news-item {
-        padding: 20px 10px; /* Keep some internal padding on mobile */
+        padding: 20px 10px;
+        /* Keep some internal padding on mobile */
     }
 }
 
@@ -421,6 +427,7 @@ header.scrolled {
         flex-direction: column;
         gap: 10px;
     }
+
     .news-title {
         margin-left: 0;
     }
@@ -434,8 +441,10 @@ header.scrolled {
     margin: 0 auto;
 }
 
-.company-table th, .company-table td {
-    padding: 25px 15px; /* Added 15px horizontal padding */
+.company-table th,
+.company-table td {
+    padding: 25px 15px;
+    /* Added 15px horizontal padding */
     text-align: left;
     border-bottom: 1px solid var(--line-color);
 }
@@ -467,6 +476,7 @@ header.scrolled {
         padding-bottom: 5px;
         border-bottom: none;
     }
+
     .company-table td {
         width: 100%;
         display: block;
@@ -515,41 +525,12 @@ textarea.form-control {
     margin-top: 50px;
 }
 
-/* Google Form Embedding */
-.google-form-container {
-    background: #fff;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    overflow: hidden;
-}
-
-.google-form-wrapper {
-    position: relative;
-    width: 100%;
-    height: 1000px; /* Adjust based on form length */
-}
-
-@media (max-width: 768px) {
-    .google-form-wrapper {
-        height: 1200px; /* More height for stacked mobile layout of Google Forms */
-    }
-}
-
-.google-form-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
-
 /* Footer */
 footer {
     background: #111;
     color: #fff;
-    padding: 100px 25px 50px; /* Add horizontal padding to footer */
+    padding: 100px 25px 50px;
+    /* Add horizontal padding to footer */
 }
 
 .footer-inner {
