@@ -81,9 +81,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const date = new Date(post.publishedAt);
                 const formattedDate = `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
 
-                const newsItem = document.createElement('div');
+                const newsItem = document.createElement('a'); // divからaに変更
+                newsItem.href = `news-detail.html?id=${post.id}`; // リンク先を設定
                 newsItem.className = 'news-item fade-up';
-                // リンクが必要な場合は詳細ページの実装に合わせて a タグに変更してください
+                
                 newsItem.innerHTML = `
                     <div class="news-meta">
                         <span class="news-date">${formattedDate}</span>

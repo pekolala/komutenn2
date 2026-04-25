@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS | FUJITA DESIGN</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .news-detail-content {
+            padding-top: 150px;
+            padding-bottom: 100px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .news-detail-header {
+            border-bottom: 1px solid #eee;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+        }
+
+        .news-detail-date {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .news-detail-title {
+            font-size: 2rem;
+            line-height: 1.4;
+            color: var(--text-color);
+        }
+
+        .news-body {
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .news-body img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 50px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: bold;
+            border-bottom: 1px solid var(--text-color);
+            transition: opacity 0.3s;
+        }
+
+        .back-btn:hover {
+            opacity: 0.6;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header" class="scrolled">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">
+                    <a href="index.html">FUJITA DESIGN</a>
+                </div>
+                <nav class="nav-menu">
+                    <a href="index.html#concept" class="nav-link">CONCEPT</a>
+                    <a href="index.html#works" class="nav-link">WORKS</a>
+                    <a href="index.html#service" class="nav-link">SERVICE</a>
+                    <a href="index.html#voice" class="nav-link">VOICE</a>
+                    <a href="index.html#news" class="nav-link">NEWS</a>
+                    <a href="index.html#company" class="nav-link">COMPANY</a>
+                    <a href="index.html#contact" class="nav-link">CONTACT</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <article class="news-detail-content">
+            <div id="news-post">
+                <p style="text-align: center; opacity: 0.6;">Loading content...</p>
+                <!-- microCMSからの内容がここに表示されます -->
+            </div>
+            <a href="index.html#news" class="back-btn">← BACK TO LIST</a>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-info">
+                    <div class="footer-logo">FUJITA DESIGN</div>
+                    <p>Experience the beauty of architecture.<br>
+                        神奈川県鎌倉市○○ 1-2-3</p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 FUJITA DESIGN. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        // 詳細ページ専用の処理
+        async function fetchPostDetail() {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
+            const postContainer = document.getElementById('news-post');
+
+            if (!id) {
+                postContainer.innerHTML = '<p>記事が見つかりませんでした。</p>';
+                return;
+            }
+
+            // main.jsで定義した定数を使用
+            const serviceId = 'fujitaup30';
+            const apiKey = 'uasbMofFROgor1GwDTNa9IwPjVUaCMNj0zV1';
+
+            try {
+                const response = await fetch(`https://${serviceId}.microcms.io/api/v1/news/${id}`, {
+                    headers: {
+                        'X-MICROCMS-API-KEY': apiKey,
+                    },
+                });
+
+                if (!response.ok) throw new Error('Fetch failed');
+
+                const post = await response.json();
+                const date = new Date(post.publishedAt);
+                const formattedDate = `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
+
+                postContainer.innerHTML = `
+                    <div class="news-detail-header">
+                        <span class="news-detail-date">${formattedDate}</span>
+                        <h1 class="news-detail-title">${post.title}</h1>
+                    </div>
+                    <div class="news-body">
+                        ${post.content}
+                    </div>
+                `;
+            } catch (error) {
+                console.error('Error:', error);
+                postContainer.innerHTML = '<p>内容の読み込みに失敗しました。</p>';
+            }
+        }
+
+        if (window.location.search.includes('id=')) {
+            fetchPostDetail();
+        }
+    </script>
+</body>
+
+</html>
