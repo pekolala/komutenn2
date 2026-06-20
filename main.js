@@ -31,19 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.nav-link');
 
     const toggleMenu = () => {
-        if (navMenu.style.display === 'flex') {
-            navMenu.style.display = 'none';
-        } else {
-            navMenu.style.display = 'flex';
-            navMenu.style.position = 'absolute';
-            navMenu.style.top = '100%';
-            navMenu.style.left = '0';
-            navMenu.style.width = '100%';
-            navMenu.style.flexDirection = 'column';
-            navMenu.style.background = '#fff';
-            navMenu.style.padding = '20px';
-            navMenu.style.boxShadow = '0 10px 10px rgba(0,0,0,0.05)';
-        }
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
     };
 
     hamburger.addEventListener('click', toggleMenu);
@@ -52,7 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             if (window.innerWidth <= 1024) {
-                navMenu.style.display = 'none';
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
             }
         });
     });
