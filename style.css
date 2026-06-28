@@ -349,6 +349,10 @@ header.scrolled {
     margin-bottom: 20px;
 }
 
+.service-item p {
+    text-align: left;
+}
+
 @media (max-width: 900px) {
     .service-list {
         grid-template-columns: 1fr;
